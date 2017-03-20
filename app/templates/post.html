@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}FlaskTest-Post{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h1>发表</h1>
+    </div>
+     <div class="col-md-8">
+        {{ wtf.quick_form(form) }}
+    </div><br>
+    <div class="col-md-8">
+         {% for post in posts %}
+             <div>
+                 <p>{{ post.title }}</p>
+                 <p>{{ post.body }}</p><br>
+             </div>
+         {% endfor %}
+    </div>
+{% endblock %}
