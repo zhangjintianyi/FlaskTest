@@ -4,13 +4,16 @@
 
 {% block page_content %}
     <div>
-        <h1>{{ current_user.username }}</h1>
-        <a href="{{ url_for('main.edit_userinfo', username=username) }}">编辑个人资料</a>
+        {% if user.favicon %}
+            <img src="{{ user.favicon }}">
+        {% endif %}
+        <h1>{{ user.username }}</h1>
+        <a href="{{ url_for('main.edit_userinfo', username=user.username) }}">编辑个人资料</a>
     </div>
 
     <div>
         {% if user.realname or user.location %}
-            <p>{% if user.username %}{{ user.realname }}{% endif %}{% if user.location %}来自<{{ user.location }}{% endif %}</p>
+            <p>{% if user.username %}{{ user.realname }}{% endif %}{% if user.location %}来自{{ user.location }}{% endif %}</p>
         {% endif %}
         {% if user.about_me %}
             <p>{{ user.about_me }}</p>

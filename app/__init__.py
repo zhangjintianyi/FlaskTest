@@ -9,6 +9,7 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = "strong"
 login_manager.login_view = "auth.Login"
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 def AppFactory():
     app = Flask(__name__)
@@ -17,6 +18,10 @@ def AppFactory():
     app.config['SECRET_KEY'] = 'asdafsadfsdf'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SQLALCHEMY_ECHO'] = True
+    UPLOAD_FOLDER = '../image/'
+
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
     bootstrap.init_app(app)
     db.init_app(app)
     migrate = Migrate(app,db)

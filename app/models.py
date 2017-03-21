@@ -21,6 +21,7 @@ class User(UserMixin, db.Model):
     about_me = db.Column(db.Text())
     register_since = db.Column(db.DateTime(), default=datetime.now())
     last_seen= db.Column(db.DateTime(), default=datetime.now())
+    favicon_name = db.Column(db.String(64))
 
     @property
     def password(self):
